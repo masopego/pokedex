@@ -3,6 +3,18 @@
     <style name="Base.Theme.Pokedex" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- SplashScreen cofiguration-->
+        <item name="android:windowSplashScreenBackground">
+            @color/blue
+        </item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/pokeball
+        </item>
+        <item name="android:windowSplashScreenAnimationDuration">3000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">
+            @color/white
+        </item>
+
     </style>
 
     <style name="Theme.Pokedex" parent="Base.Theme.Pokedex" />
