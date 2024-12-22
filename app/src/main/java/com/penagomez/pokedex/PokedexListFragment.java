@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,15 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.penagomez.pokedex.data.dto.Pokemon;
+import com.penagomez.pokedex.data.repository.PokemonRepository;
+import com.penagomez.pokedex.data.service.PokemonResponse;
+import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.PokedexListFragmentBinding;
 import com.penagomez.pokedex.ui.pokedexlist.PokedexListRecyclerViewAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PokedexListFragment extends Fragment {
 
     private PokedexListFragmentBinding binding;
-    private ArrayList<Pokemon> pokemons;
+    private List<Pokemon> pokemons = new ArrayList<>();
     private PokedexListRecyclerViewAdapter adapter;
 
     @Nullable
@@ -46,27 +55,23 @@ public class PokedexListFragment extends Fragment {
 
     // Método para cargar juegos (puedes implementar tu lógica aquí)
     private void loadPokemons() {
-        pokemons = new ArrayList<Pokemon>();
-        pokemons.add(new Pokemon(
-                "https://m.media-amazon.com/images/I/71uS8Ra1aGL._AC_UF894,1000_QL80_.jpg",
-                "Pikachu"
-        ));
+        PokemonService service = PokemonRepository.getPokemons().create(PokemonService.class);
+        service.getPokemonList(0,50).enqueue(new Callback<PokemonResponse>() {
+            @Override
+            public void onResponse(Call<PokemonResponse> call, Response<PokemonResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    pokemons.addAll(response.body().getResults());
+                    adapter.notifyDataSetChanged();
+                }
+            }
 
-        pokemons.add(new Pokemon(
-                "https://m.media-amazon.com/images/I/71C9pOGlKtL.jpg",
-                "Bulbasur"
-        ));
-
-
-        pokemons.add(new Pokemon(
-                "https://m.media-amazon.com/images/I/91bAhoyCcUL.jpg",
-                "Squirtle"
-        ));
-
-        pokemons.add(new Pokemon(
-                "https://media.vandal.net/m/85340/paper-mario-the-origami-king-20205141527529_1.jpg",
-                "Charizar"
-        ));
+            @Override
+            public void onFailure(Call<PokemonResponse> call, Throwable t) {
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "Error al cargar los Pokémon. Revisa tu conexión a Internet.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
 
