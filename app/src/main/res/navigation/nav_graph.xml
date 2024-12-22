@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/myPokedexFragment">
+    <fragment
+        android:id="@+id/myPokedexFragment"
+        android:name="com.penagomez.pokedex.MyPokedexFragment"
+        android:label="MyPokedexFragment" />
+    <fragment
+        android:id="@+id/pokedexListFragment"
+        android:name="com.penagomez.pokedex.PokedexListFragment"
+        android:label="PokedexListFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.penagomez.pokedex.SettingsFragment"
+        android:label="SettingsFragment" />
+
+</navigation>

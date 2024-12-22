@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/my_pokemons_menu"
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/nav_my_pokemons" />
+    <item
+        android:id="@+id/pokedex_list_menu"
+        android:icon="@android:drawable/ic_dialog_dialer"
+        android:title="@string/nav_pokedex_list" />
+    <item
+        android:id="@+id/settings_menu"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="@string/nav_settings" />
+</menu>
