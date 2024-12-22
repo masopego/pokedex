@@ -3,15 +3,18 @@ package com.penagomez.pokedex;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,5 +64,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         return navController.navigateUp() || super.onSupportNavigateUp();
+    }
+
+    public void pokemonClicked(Pokemon pokemon, View view) {
+        Bundle bundle = new Bundle();
+        bundle.putString("image", pokemon.getImage());
+        bundle.putString("name", pokemon.getName());
+        Navigation.findNavController(view).navigate(R.id.myPokedexFragment, bundle);
     }
 }
