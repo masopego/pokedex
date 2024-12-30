@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.penagomez.pokedex.data.dto.Pokemon;
-import com.penagomez.pokedex.data.repository.PokemonRepository;
+import com.penagomez.pokedex.data.repository.APIClient;
 import com.penagomez.pokedex.data.service.PokemonResponse;
 import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.PokedexListFragmentBinding;
@@ -42,10 +42,8 @@ public class PokedexListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Inicializa la lista de juegos
         loadPokemons();
 
-        // Configurar el RecyclerView
         adapter = new PokedexListRecyclerViewAdapter(pokemons, getActivity());
         binding.pokemonRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.pokemonRecyclerview.setAdapter(adapter);
@@ -53,9 +51,8 @@ public class PokedexListFragment extends Fragment {
 
     }
 
-    // Método para cargar juegos (puedes implementar tu lógica aquí)
     private void loadPokemons() {
-        PokemonService service = PokemonRepository.getPokemons().create(PokemonService.class);
+        PokemonService service = APIClient.getRetrofitInstance().create(PokemonService.class);
         service.getPokemonList(0,50).enqueue(new Callback<PokemonResponse>() {
             @Override
             public void onResponse(Call<PokemonResponse> call, Response<PokemonResponse> response) {
