@@ -12,16 +12,20 @@ import com.penagomez.pokedex.MainActivity;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.databinding.PokemonCardviewBinding;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<PokedexListViewHolder> {
     private final List<Pokemon> pokemons;
     private final Context context;
+    private Set<String> favouritedPokemons;
 
 
     public PokedexListRecyclerViewAdapter(List<Pokemon> pokemons, Context context) {
         this.pokemons = pokemons;
         this.context = context;
+        this.favouritedPokemons = new HashSet<>();
     }
 
     @NonNull
@@ -34,11 +38,9 @@ public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<Pokedex
 
     @Override
     public void onBindViewHolder(@NonNull PokedexListViewHolder holder, int position) {
-        // Get the current pokemon and bind data to the ViewHolder
         Pokemon currentPokemon = this.pokemons.get(position);
         holder.bind(currentPokemon);
 
-        // Set click listener to trigger navigation or other actions
         holder.itemView.setOnClickListener(view -> itemClicked(currentPokemon, view));
     }
 
@@ -49,6 +51,11 @@ public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<Pokedex
 
     private void itemClicked(Pokemon currentPokemon, View view) {
         ((MainActivity) context).pokemonClicked(currentPokemon, view);
+    }
+
+    public void setFavouritedPokemon(Set<String> favouritedPokemons) {
+        this.favouritedPokemons = favouritedPokemons;
+        notifyDataSetChanged();
     }
 
 }
