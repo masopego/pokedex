@@ -20,6 +20,7 @@ import com.penagomez.pokedex.ui.pokedexlist.PokedexListRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +31,7 @@ public class PokedexListFragment extends Fragment {
     private PokedexListFragmentBinding binding;
     private List<Pokemon> pokemons = new ArrayList<>();
     private PokedexListRecyclerViewAdapter adapter;
+
 
     @Nullable
     @Override

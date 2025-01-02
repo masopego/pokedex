@@ -21,4 +21,7 @@ public class MyPokedexFragment extends Fragment {
         binding = MyPokedexFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){}
 }
