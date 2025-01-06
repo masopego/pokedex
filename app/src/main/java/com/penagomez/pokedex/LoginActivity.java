@@ -119,11 +119,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             goToMainActivity();
                         } else {
-                            Toast.makeText(this, "Authentication Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, R.string.generic_error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
-            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.required_error, Toast.LENGTH_SHORT).show();
         }
     }
 
