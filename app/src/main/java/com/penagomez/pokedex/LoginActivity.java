@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             startIntentSenderForResult(
                                     beginSignInResult.getPendingIntent().getIntentSender(),
-                                    1001, // Código de solicitud
+                                    1001,
                                     null, 0, 0, 0
                             );
                         } catch (Exception e) {
@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnFailureListener(this, new OnFailureListener() {
                     @Override
                     public void onFailure(Exception e) {
-                        Toast.makeText(LoginActivity.this, "FAILURE", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, R.string.generic_error, Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 });
@@ -135,7 +135,6 @@ public class LoginActivity extends AppCompatActivity {
 
         switch (requestCode) {
             case REQ_ONE_TAP:
-                Toast.makeText(this, "REQUEST",Toast.LENGTH_SHORT);
                 FirebaseUser user = auth.getCurrentUser();
 
                 try {
