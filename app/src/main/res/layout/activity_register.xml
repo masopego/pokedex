@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <EditText
         android:id="@+id/emailEditText"
@@ -35,11 +35,10 @@
         android:layout_marginEnd="32dp" />
 
     <Button
-        android:id="@+id/emailLoginButton"
+        android:id="@+id/registerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/login_button"
-        android:backgroundTint="@color/blue"
+        android:text="@string/register_button"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,41 +46,5 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp" />
 
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/googleSignInButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/emailLoginButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
-
-    <TextView
-        android:id="@+id/optional"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/optional"
-        app:layout_constraintTop_toBottomOf="@id/googleSignInButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        />
-
-    <Button
-        android:id="@+id/registerLink"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/fui_transparent"
-        android:textColor="@color/blue"
-        android:text="@string/register_link"
-        app:layout_constraintTop_toBottomOf="@id/optional"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

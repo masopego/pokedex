@@ -31,8 +31,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REQ_ONE_TAP = 1001;
-    private boolean showOneTapUI = true;
-
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
     private SignInClient oneTapClient;
@@ -41,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     Button emailLoginButton;
     EditText emailEditText;
     EditText passwordEditText;
+    Button registerLink;
     SignInButton signInButton;
 
 
@@ -53,8 +52,11 @@ public class LoginActivity extends AppCompatActivity {
          emailEditText = findViewById(R.id.emailEditText);
          passwordEditText = findViewById(R.id.passwordEditText);
          signInButton = findViewById(R.id.googleSignInButton);
+         registerLink = findViewById(R.id.registerLink);
+
 
          emailLoginButton.setOnClickListener(v -> handleEmailLogin(auth));
+        registerLink.setOnClickListener(v -> goToRegisterActivity());
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -106,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     private void handleEmailLogin(FirebaseAuth auth) {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
+
 
         if (!email.isEmpty() && !password.isEmpty()) {
             auth.signInWithEmailAndPassword(email, password)
@@ -183,6 +186,13 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        startActivity(intent);
+    }
+
+    protected void goToRegisterActivity(){
+        Intent intent = new Intent(this, RegisterActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         startActivity(intent);
