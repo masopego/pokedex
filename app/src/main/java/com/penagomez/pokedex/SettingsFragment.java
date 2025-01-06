@@ -23,15 +23,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     public boolean handleLogout(Preference preference) {
-        // Lógica para cerrar sesión
         FirebaseAuth.getInstance().signOut();
 
-        // Redirigir a LoginActivity
         Intent intent = new Intent(requireContext(), LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Borra el stack
         startActivity(intent);
 
-        // Mostrar mensaje
         Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show();
 
         return true;
