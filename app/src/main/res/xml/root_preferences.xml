@@ -30,6 +30,11 @@
             app:summaryOn="@string/attachment_summary_on"
             app:title="@string/attachment_title" />
 
+        <Preference
+            app:key="logout"
+            app:title="@string/logout_title"
+  />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
