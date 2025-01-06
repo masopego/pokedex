@@ -14,6 +14,11 @@
     <string name="register_link"><u>Regístrate</u></string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Contraseña</string>
+    <string name="user_register_success">Usuario registrado correctamente</string>
+    <string name="max_length_error">La contraseña debe tener al menos 6 carácteres</string>
+    <string name="generic_error">La autenticación ha fallado</string>
+    <string name="required_error">Por favor, rellena todos los campos</string>
+    <string name="invalid_format_error">Email inválido</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
