@@ -11,16 +11,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.penagomez.pokedex.data.dto.Pokemon;
+import com.penagomez.pokedex.data.dto.PokemonName;
 import com.penagomez.pokedex.data.repository.APIClient;
-import com.penagomez.pokedex.data.service.PokemonResponse;
+import com.penagomez.pokedex.data.service.PokemonListResponse;
 import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.PokedexListFragmentBinding;
 import com.penagomez.pokedex.ui.pokedexlist.PokedexListRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +28,7 @@ import retrofit2.Response;
 public class PokedexListFragment extends Fragment {
 
     private PokedexListFragmentBinding binding;
-    private List<Pokemon> pokemons = new ArrayList<>();
+    private List<PokemonName> pokemonNames = new ArrayList<>();
     private PokedexListRecyclerViewAdapter adapter;
 
 
@@ -46,7 +45,7 @@ public class PokedexListFragment extends Fragment {
 
         loadPokemons();
 
-        adapter = new PokedexListRecyclerViewAdapter(pokemons, getActivity());
+        adapter = new PokedexListRecyclerViewAdapter(pokemonNames, getActivity());
         binding.pokemonRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.pokemonRecyclerview.setAdapter(adapter);
 
@@ -55,19 +54,19 @@ public class PokedexListFragment extends Fragment {
 
     private void loadPokemons() {
         PokemonService service = APIClient.getRetrofitInstance().create(PokemonService.class);
-        service.getPokemonList(0,50).enqueue(new Callback<PokemonResponse>() {
+        service.getPokemonList(0,50).enqueue(new Callback<PokemonListResponse>() {
             @Override
-            public void onResponse(Call<PokemonResponse> call, Response<PokemonResponse> response) {
+            public void onResponse(Call<PokemonListResponse> call, Response<PokemonListResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    pokemons.addAll(response.body().getResults());
+                    pokemonNames.addAll(response.body().getResults());
                     adapter.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<PokemonResponse> call, Throwable t) {
+            public void onFailure(Call<PokemonListResponse> call, Throwable t) {
                 if (getContext() != null) {
-                    Toast.makeText(getContext(), "Error al cargar los Pokémon. Revisa tu conexión a Internet.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.not_found, Toast.LENGTH_LONG).show();
                 }
             }
         });

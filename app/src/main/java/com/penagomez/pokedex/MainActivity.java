@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +15,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.penagomez.pokedex.data.dto.Pokemon;
+import com.penagomez.pokedex.data.dto.PokemonMapper;
+import com.penagomez.pokedex.data.dto.PokemonName;
+import com.penagomez.pokedex.data.repository.APIClient;
+import com.penagomez.pokedex.data.repository.FirebaseDatabase;
+import com.penagomez.pokedex.data.service.PokemonDetailResponse;
+import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.ActivityMainBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -25,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -66,10 +79,37 @@ public class MainActivity extends AppCompatActivity {
         return navController.navigateUp() || super.onSupportNavigateUp();
     }
 
-    public void pokemonClicked(Pokemon pokemon, View view) {
+    public void pokemonClicked(PokemonName pokemon, View view) {
+        String pokemonName = pokemon.getName();
         Bundle bundle = new Bundle();
-        bundle.putString("image", pokemon.getImage());
-        bundle.putString("name", pokemon.getName());
+        bundle.putString("name", pokemonName);
+
+        this.getPokemonDetail(pokemonName);
         Navigation.findNavController(view).navigate(R.id.myPokedexFragment, bundle);
+    }
+
+
+    private void getPokemonDetail(String pokemonName){
+        PokemonService service = APIClient.getRetrofitInstance().create(PokemonService.class);
+        service.getPokemonByName(pokemonName).enqueue(new Callback<PokemonDetailResponse>() {
+            @Override
+            public void onResponse(Call<PokemonDetailResponse> call, Response<PokemonDetailResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+
+                    FirebaseDatabase repository = new FirebaseDatabase();
+
+                    Pokemon pokemon = PokemonMapper.fromResponse(response.body());
+                    String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+                    repository.saveFavouritePokemon(pokemon, userEmail);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PokemonDetailResponse> call, Throwable t) {
+                    Toast.makeText(MainActivity.this, R.string.not_found, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
