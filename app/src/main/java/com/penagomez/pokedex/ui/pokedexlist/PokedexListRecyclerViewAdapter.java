@@ -9,23 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.penagomez.pokedex.MainActivity;
-import com.penagomez.pokedex.data.dto.Pokemon;
+import com.penagomez.pokedex.data.dto.PokemonName;
 import com.penagomez.pokedex.databinding.PokemonCardviewBinding;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<PokedexListViewHolder> {
-    private final List<Pokemon> pokemons;
+    private final List<PokemonName> pokemonNames;
     private final Context context;
-    private Set<String> favouritedPokemons;
 
 
-    public PokedexListRecyclerViewAdapter(List<Pokemon> pokemons, Context context) {
-        this.pokemons = pokemons;
+    public PokedexListRecyclerViewAdapter(List<PokemonName> pokemonNames, Context context) {
+        this.pokemonNames = pokemonNames;
         this.context = context;
-        this.favouritedPokemons = new HashSet<>();
     }
 
     @NonNull
@@ -38,25 +34,21 @@ public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<Pokedex
 
     @Override
     public void onBindViewHolder(@NonNull PokedexListViewHolder holder, int position) {
-        Pokemon currentPokemon = this.pokemons.get(position);
-        holder.bind(currentPokemon);
+        PokemonName currentPokemonName = this.pokemonNames.get(position);
+        holder.bind(currentPokemonName);
 
-        holder.itemView.setOnClickListener(view -> itemClicked(currentPokemon, view));
+        holder.itemView.setOnClickListener(view -> itemClicked(currentPokemonName, view));
     }
 
     @Override
     public int getItemCount() {
-        return pokemons.size();
+        return pokemonNames.size();
     }
 
-    private void itemClicked(Pokemon currentPokemon, View view) {
-        ((MainActivity) context).pokemonClicked(currentPokemon, view);
+    private void itemClicked(PokemonName currentPokemonName, View view) {
+        ((MainActivity) context).pokemonClicked(currentPokemonName, view);
     }
 
-    public void setFavouritedPokemon(Set<String> favouritedPokemons) {
-        this.favouritedPokemons = favouritedPokemons;
-        notifyDataSetChanged();
-    }
 
 }
 
