@@ -1,4 +1,4 @@
-package com.penagomez.pokedex.ui.pokedexlist;
+package com.penagomez.pokedex.ui.pokedexlist.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

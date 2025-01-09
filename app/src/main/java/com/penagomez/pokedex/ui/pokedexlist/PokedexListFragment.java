@@ -1,4 +1,4 @@
-package com.penagomez.pokedex;
+package com.penagomez.pokedex.ui.pokedexlist;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.PokemonName;
 import com.penagomez.pokedex.data.repository.APIClient;
 import com.penagomez.pokedex.data.service.PokemonListResponse;
 import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.PokedexListFragmentBinding;
-import com.penagomez.pokedex.ui.pokedexlist.PokedexListRecyclerViewAdapter;
+import com.penagomez.pokedex.ui.pokedexlist.adapter.PokedexListRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,15 +4,19 @@
     app:startDestination="@id/myPokedexFragment">
     <fragment
         android:id="@+id/myPokedexFragment"
-        android:name="com.penagomez.pokedex.MyPokedexFragment"
+        android:name="com.penagomez.pokedex.ui.mypokedex.MyPokedexFragment"
         android:label="MyPokedexFragment" />
     <fragment
         android:id="@+id/pokedexListFragment"
-        android:name="com.penagomez.pokedex.PokedexListFragment"
+        android:name="com.penagomez.pokedex.ui.pokedexlist.PokedexListFragment"
         android:label="PokedexListFragment" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.penagomez.pokedex.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/pokemonDetailsFragment"
+        android:name="com.penagomez.pokedex.ui.pokemondetails.PokemonDetailsFragment"
+        android:label="PokemonDetailsFragment" />
 
 </navigation>

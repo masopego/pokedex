@@ -88,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
         Navigation.findNavController(view).navigate(R.id.myPokedexFragment, bundle);
     }
 
+    public void pokemonFavouriteClicked(Pokemon pokemon, View view){
+        String pokemonName = pokemon.getName();
+        Bundle bundle = new Bundle();
+        bundle.putString("name", pokemonName);
+
+
+        Navigation.findNavController(view).navigate(R.id.pokemonDetailsFragment, bundle);
+    }
+
 
     private void getPokemonDetail(String pokemonName){
         PokemonService service = APIClient.getRetrofitInstance().create(PokemonService.class);
