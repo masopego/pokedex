@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.FirebaseApp;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
@@ -164,9 +165,9 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
-                        Log.d("FirebaseAuth", "Usuario autenticado: " + user.getDisplayName());
+                        Log.d("FirebaseAuth", R.string.user_login_success + user.getDisplayName());
                     } else {
-                        Log.e("FirebaseAuth", "Error al autenticar en Firebase", task.getException());
+                        Log.e("FirebaseAuth", String.valueOf(R.string.generic_error), task.getException());
                     }
                 });
     }
@@ -175,6 +176,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
 
+        FirebaseApp.initializeApp(this);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(user !=  null){

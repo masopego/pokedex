@@ -3,7 +3,7 @@
 
     <!-- Menu -->
     <string name="nav_pokedex_list">Pokédex</string>
-    <string name="nav_my_pokemons">Mis pokemons</string>
+    <string name="nav_my_pokemons">Mis pokemonNames</string>
     <string name="nav_settings">Ajustes</string>
 
 
@@ -15,10 +15,15 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Contraseña</string>
     <string name="user_register_success">Usuario registrado correctamente</string>
+    <string name="user_login_success">Usuario autenticado correctamente</string>
     <string name="max_length_error">La contraseña debe tener al menos 6 carácteres</string>
     <string name="generic_error">La autenticación ha fallado</string>
     <string name="required_error">Por favor, rellena todos los campos</string>
     <string name="invalid_format_error">Email inválido</string>
+
+
+    <!-- PokedexList -->
+    <string name="not_found">Error al cargar los Pokémon. Revisa tu conexión a Internet.</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
