@@ -1,7 +1,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="50dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="60dp"
     android:paddingHorizontal="20dp">
 
 
@@ -10,7 +11,7 @@
         android:id="@+id/pokemon_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="20dp" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
