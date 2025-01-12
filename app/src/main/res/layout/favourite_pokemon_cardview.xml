@@ -54,8 +54,7 @@
                 android:src="@drawable/ic_rubbish"
                 android:contentDescription="Borrar"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:scaleType="centerInside"
-                android:onClick="onDeleteClick" />
+                android:scaleType="centerInside" />
 
         </LinearLayout>
 

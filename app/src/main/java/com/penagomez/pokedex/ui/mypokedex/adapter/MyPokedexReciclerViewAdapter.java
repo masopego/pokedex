@@ -11,17 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.penagomez.pokedex.ui.MainActivity;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.databinding.FavouritePokemonCardviewBinding;
+import com.penagomez.pokedex.ui.mypokedex.listener.OnPokemonActionListener;
 
 import java.util.List;
 
 public class MyPokedexReciclerViewAdapter extends RecyclerView.Adapter<MyPokedexViewHolder> {
+
     private final List<Pokemon> pokemons;
     private final Context context;
+    private final OnPokemonActionListener listener;
 
 
-    public MyPokedexReciclerViewAdapter(List<Pokemon> pokemons, Context context) {
+    public MyPokedexReciclerViewAdapter(List<Pokemon> pokemons, Context context, OnPokemonActionListener listener) {
         this.pokemons = pokemons;
         this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -37,6 +41,7 @@ public class MyPokedexReciclerViewAdapter extends RecyclerView.Adapter<MyPokedex
         Pokemon currentPokemon = this.pokemons.get(position);
         holder.bind(currentPokemon);
 
+        holder.deleteButton.setOnClickListener(v -> itemDeleteClicked(currentPokemon));
         holder.itemView.setOnClickListener(view -> itemClicked(currentPokemon, view));
     }
 
@@ -47,6 +52,12 @@ public class MyPokedexReciclerViewAdapter extends RecyclerView.Adapter<MyPokedex
 
     private void itemClicked(Pokemon currentPokemon, View view) {
         ((MainActivity) context).pokemonFavouriteClicked(currentPokemon, view);
+    }
+
+    private void itemDeleteClicked(Pokemon currentPokemon){
+        if (listener != null) {
+            listener.onDeleteClick(currentPokemon);
+        }
     }
 
 }

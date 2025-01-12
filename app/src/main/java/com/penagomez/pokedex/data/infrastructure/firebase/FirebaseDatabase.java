@@ -41,7 +41,6 @@ public class FirebaseDatabase {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("Firestore", "Documento agregado correctamente");
-                        // Llamar al Consumer en caso de éxito
                         onSuccess.accept(aVoid);
                     }
                 })
@@ -49,7 +48,6 @@ public class FirebaseDatabase {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("Firestore", "Error al agregar documento", e);
-                        // Llamar al Consumer en caso de error
                         onError.accept(e);
                     }
                 });
@@ -79,7 +77,7 @@ public class FirebaseDatabase {
         });
     }
 
-    public void removeFavouritePokemon(String userEmail, String pokemonName){
+    public void removeFavouritePokemon(String userEmail, String pokemonName, Consumer<Void> onSuccess, Consumer<Exception> onError){
         pokedexRef.whereEqualTo("userId", userEmail)
                 .whereEqualTo("name", pokemonName).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -88,17 +86,17 @@ public class FirebaseDatabase {
                     for (QueryDocumentSnapshot document : documents) {
                         document.getReference().delete()
                                 .addOnSuccessListener(aVoid -> {
-                                    System.out.println("Documento eliminado correctamente.");
+                                    onSuccess.accept(aVoid);
                                 })
                                 .addOnFailureListener(e -> {
-                                    System.err.println("Error al eliminar el documento: " + e);
+                                    onError.accept(e);
                                 });
                     }
                 } else {
                     System.out.println("No se encontraron documentos que coincidan.");
                 }
             } else {
-                System.err.println("Error al obtener los documentos: " + task.getException());
+                onError.accept(task.getException());
             }
         });
     }

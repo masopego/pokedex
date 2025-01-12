@@ -19,21 +19,13 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
-import com.penagomez.pokedex.data.infrastructure.api.mapper.PokemonMapper;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
-import com.penagomez.pokedex.data.infrastructure.api.ApiConfig;
 import com.penagomez.pokedex.data.infrastructure.firebase.FirebaseDatabase;
-import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonDetailResponse;
-import com.penagomez.pokedex.data.infrastructure.api.PokemonApiClient;
 import com.penagomez.pokedex.data.service.PokedexService;
 import com.penagomez.pokedex.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
