@@ -1,10 +1,10 @@
-package com.penagomez.pokedex.data.repository;
+package com.penagomez.pokedex.data.infrastructure.api;
 
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class APIClient {
+public class ApiConfig {
 
     private static final String BASE_URL = "https://pokeapi.co/api/v2/";
     private static Retrofit retrofit;
@@ -17,5 +17,9 @@ public class APIClient {
                     .build();
         }
         return retrofit;
+    }
+
+    public static PokemonApiClient getPokemonApiClient(){
+        return ApiConfig.getRetrofitInstance().create(PokemonApiClient.class);
     }
 }

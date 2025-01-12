@@ -1,4 +1,4 @@
-package com.penagomez.pokedex.data.service;
+package com.penagomez.pokedex.data.infrastructure.api.responses;
 
 import com.google.gson.annotations.SerializedName;
 

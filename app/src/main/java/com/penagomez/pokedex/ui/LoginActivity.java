@@ -1,4 +1,4 @@
-package com.penagomez.pokedex;
+package com.penagomez.pokedex.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +27,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.penagomez.pokedex.R;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -144,8 +145,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (idToken != null) {
                         authenticateWithFirebase(idToken);
-                        goToMainActivity();
-
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -165,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
+                        goToMainActivity();
                         Log.d("FirebaseAuth", R.string.user_login_success + user.getDisplayName());
                     } else {
                         Log.e("FirebaseAuth", String.valueOf(R.string.generic_error), task.getException());

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Texts styles -->
+    <style name="Title">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="PokemonsName">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Card View styles -->
+    <style name="CardViewStyle">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="android:shadowColor">@color/blue</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+</resources>

@@ -3,7 +3,6 @@ package com.penagomez.pokedex.data.dto;
 import java.util.List;
 
 public class Pokemon {
-
     private final String name;
     private final int weight;
     private final int height;

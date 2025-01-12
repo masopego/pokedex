@@ -1,11 +1,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="pokemonName" type="com.penagomez.pokedex.data.dto.PokemonName"/>
+        <variable name="pokemon" type="com.penagomez.pokedex.data.dto.PokemonFavorite"/>
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        style="@style/CardViewStyle"
+        android:backgroundTint="@{pokemon.isFavorite ? @color/grey : @color/white}"
+        android:clickable="@{!pokemon.isFavorite}"
+        android:enabled="@{!pokemon.isFavorite}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,6 +19,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:orientation="vertical">
 
@@ -23,9 +27,19 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PokemonName Name" />
+                    android:text="@{pokemon.name}"
+                    style="@style/PokemonsName" />
 
             </LinearLayout>
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:scaleType="centerInside"
+                android:src="@{pokemon.isFavorite ? @drawable/ic_heart_filled : @drawable/ic_heart_empty}"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="Favorito"
+             />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

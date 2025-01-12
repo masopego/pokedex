@@ -1,4 +1,4 @@
-package com.penagomez.pokedex;
+package com.penagomez.pokedex.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.penagomez.pokedex.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 

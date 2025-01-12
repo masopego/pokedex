@@ -1,18 +1,19 @@
 package com.penagomez.pokedex.data.dto;
 
 public class PokemonName {
+    private String name;
 
-    private final String name;
-
-
-    public PokemonName(String name){
+    public PokemonName(String name) {
         this.name = name;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }
+
 

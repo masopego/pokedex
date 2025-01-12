@@ -3,7 +3,7 @@
 
     <!-- Menu -->
     <string name="nav_pokedex_list">Pokédex</string>
-    <string name="nav_my_pokemons">Mis pokemonNames</string>
+    <string name="nav_my_pokemons">Mis pokemon</string>
     <string name="nav_settings">Ajustes</string>
 
 
