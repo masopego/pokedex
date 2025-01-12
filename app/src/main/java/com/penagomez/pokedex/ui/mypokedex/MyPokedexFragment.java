@@ -47,6 +47,15 @@ public class MyPokedexFragment extends Fragment {
     }
 
 
+    /*public void onDeleteClick(View){
+
+        FirebaseDatabase repository = new FirebaseDatabase();
+        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        repository.removeFavouritePokemon(userEmail);
+    }*/
+
+
     private void loadFavouritesPokemons() {
         FirebaseDatabase repository = new FirebaseDatabase();
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();

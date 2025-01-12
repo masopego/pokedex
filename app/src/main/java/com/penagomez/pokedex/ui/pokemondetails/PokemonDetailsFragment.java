@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.penagomez.pokedex.databinding.PokemonDetailsFragmentBinding;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class PokemonDetailsFragment extends Fragment {
 
@@ -29,12 +32,22 @@ public class PokemonDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if(getArguments() != null){
-            int image = getArguments().getInt("image");
+            String image = getArguments().getString("image");
             String name = getArguments().getString("name");
+            String weight = getArguments().getString("weight");
+            String height = getArguments().getString("height");
+            String id = getArguments().getString("id");
+            ArrayList<String> types = getArguments().getStringArrayList("types");
 
+            String typesText = types != null ? android.text.TextUtils.join(", ", types) : "N/A";
 
-            binding.pokemonImage.setImageResource(image);
+            Picasso.get().load(image).into(binding.pokemonImage);
             binding.pokemonName.setText(name);
+            binding.pokemonWeight.setText(weight);
+            binding.pokemonHeight.setText(height);
+            binding.pokemonId.setText(id);
+            binding.pokemonTypes.setText(typesText);
+
         }
     }
 }

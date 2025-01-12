@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        style="@style/Title"
          />
 
     <TextView
@@ -24,5 +25,26 @@
         android:layout_marginTop="10dp"
         android:textAlignment="center"
          />
+    <TextView
+        android:id="@+id/pokemon_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        />
+    <TextView
+        android:id="@+id/pokemon_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        />
+    <TextView
+        android:id="@+id/pokemon_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        />
 
 </LinearLayout>

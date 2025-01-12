@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.databinding.FavouritePokemonCardviewBinding;
+import com.squareup.picasso.Picasso;
 
 
 public class MyPokedexViewHolder extends RecyclerView.ViewHolder {
@@ -17,7 +18,9 @@ public class MyPokedexViewHolder extends RecyclerView.ViewHolder {
 
 
     public void bind(Pokemon pokemon){
+        Picasso.get().load(pokemon.getImage()).into(binding.image);
         binding.name.setText(pokemon.getName());
+
         binding.executePendingBindings();
     }
 }
