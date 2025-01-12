@@ -9,18 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.penagomez.pokedex.MainActivity;
-import com.penagomez.pokedex.data.dto.PokemonName;
+import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.databinding.PokemonCardviewBinding;
 
 import java.util.List;
 
 public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<PokedexListViewHolder> {
-    private final List<PokemonName> pokemonNames;
+    private final List<PokemonFavorite> pokemons;
     private final Context context;
 
 
-    public PokedexListRecyclerViewAdapter(List<PokemonName> pokemonNames, Context context) {
-        this.pokemonNames = pokemonNames;
+    public PokedexListRecyclerViewAdapter(List<PokemonFavorite> pokemonNames, Context context) {
+        this.pokemons = pokemonNames;
         this.context = context;
     }
 
@@ -34,22 +34,22 @@ public class PokedexListRecyclerViewAdapter extends RecyclerView.Adapter<Pokedex
 
     @Override
     public void onBindViewHolder(@NonNull PokedexListViewHolder holder, int position) {
-        PokemonName currentPokemonName = this.pokemonNames.get(position);
-        holder.bind(currentPokemonName);
+        PokemonFavorite currentPokemon = this.pokemons.get(position);
+        holder.bind(currentPokemon);
 
-        holder.itemView.setOnClickListener(view -> itemClicked(currentPokemonName, view));
+        holder.itemView.setOnClickListener(view -> itemClicked(currentPokemon, view));
     }
 
     @Override
     public int getItemCount() {
-        return pokemonNames.size();
+        return pokemons.size();
     }
 
-    private void itemClicked(PokemonName currentPokemonName, View view) {
-        ((MainActivity) context).pokemonClicked(currentPokemonName, view);
+    private void itemClicked(PokemonFavorite currentPokemon, View view) {
+        if (!currentPokemon.isFavorite()) {
+            ((MainActivity) context).pokemonClicked(currentPokemon, view);
+        }
     }
-
-
 }
 
 

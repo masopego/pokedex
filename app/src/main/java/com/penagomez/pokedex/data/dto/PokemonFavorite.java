@@ -1,17 +1,15 @@
 package com.penagomez.pokedex.data.dto;
 
-public class PokemonName {
+public class PokemonFavorite {
     private String name;
     private boolean isFavorite = false;
 
-    // Constructor, getters y setters
-
-    public PokemonName(String name) {
+    public PokemonFavorite(String name) {
         this.name = name;
         this.isFavorite = false;
     }
 
-    public PokemonName(String name, boolean isFavorite) {
+    public PokemonFavorite(String name, boolean isFavorite) {
         this.name = name;
         this.isFavorite = isFavorite;
     }

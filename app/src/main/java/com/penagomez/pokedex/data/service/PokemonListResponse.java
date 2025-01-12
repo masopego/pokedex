@@ -1,5 +1,6 @@
 package com.penagomez.pokedex.data.service;
 
+import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.data.dto.PokemonName;
 
 import java.util.List;

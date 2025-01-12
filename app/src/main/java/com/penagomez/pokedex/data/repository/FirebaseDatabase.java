@@ -33,7 +33,7 @@ public class FirebaseDatabase {
         row.put("height", pokemon.getHeight());
         row.put("index", pokemon.getId());
         row.put("image", pokemon.getImage());
-        row.put("type", pokemon.getTypes());
+        row.put("types", pokemon.getTypes());
         row.put("userId", userEmail);
 
 
@@ -99,4 +99,5 @@ public class FirebaseDatabase {
             }
         });
     }
+
 }

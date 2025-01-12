@@ -2,7 +2,7 @@ package com.penagomez.pokedex.ui.pokedexlist.adapter;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.penagomez.pokedex.data.dto.PokemonName;
+import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.databinding.PokemonCardviewBinding;
 
 public class PokedexListViewHolder extends RecyclerView.ViewHolder {
@@ -15,8 +15,8 @@ public class PokedexListViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void bind(PokemonName pokemonName){
-        binding.name.setText(pokemonName.getName());
+    public void bind(PokemonFavorite pokemon){
+        binding.setPokemon(pokemon);
         binding.executePendingBindings();
     }
 }

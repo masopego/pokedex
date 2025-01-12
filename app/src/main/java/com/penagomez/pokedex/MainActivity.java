@@ -15,15 +15,18 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.data.dto.PokemonMapper;
-import com.penagomez.pokedex.data.dto.PokemonName;
+import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.data.repository.APIClient;
 import com.penagomez.pokedex.data.repository.FirebaseDatabase;
 import com.penagomez.pokedex.data.service.PokemonDetailResponse;
 import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,19 +82,24 @@ public class MainActivity extends AppCompatActivity {
         return navController.navigateUp() || super.onSupportNavigateUp();
     }
 
-    public void pokemonClicked(PokemonName pokemon, View view) {
+    public void pokemonClicked(PokemonFavorite pokemon, View view) {
         String pokemonName = pokemon.getName();
         Bundle bundle = new Bundle();
         bundle.putString("name", pokemonName);
 
         this.getPokemonDetail(pokemonName);
         Navigation.findNavController(view).navigate(R.id.myPokedexFragment, bundle);
+        binding.bottomNavigationView.setSelectedItemId(R.id.my_pokemons_menu);
     }
 
     public void pokemonFavouriteClicked(Pokemon pokemon, View view){
-        String pokemonName = pokemon.getName();
         Bundle bundle = new Bundle();
-        bundle.putString("name", pokemonName);
+        bundle.putString("name", pokemon.getName());
+        bundle.putString("weight", String.valueOf(pokemon.getWeight()));
+        bundle.putString("height", String.valueOf(pokemon.getHeight()));
+        bundle.putString("id", String.valueOf(pokemon.getId()));
+        bundle.putString("image", pokemon.getImage());
+        bundle.putStringArrayList("types", new ArrayList<>(pokemon.getTypes()));
 
 
         Navigation.findNavController(view).navigate(R.id.pokemonDetailsFragment, bundle);
