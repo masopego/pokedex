@@ -1,7 +1,8 @@
-package com.penagomez.pokedex;
+package com.penagomez.pokedex.ui;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -15,18 +16,20 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
-import com.penagomez.pokedex.data.dto.PokemonMapper;
+import com.penagomez.pokedex.data.infrastructure.api.mapper.PokemonMapper;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
-import com.penagomez.pokedex.data.repository.APIClient;
-import com.penagomez.pokedex.data.repository.FirebaseDatabase;
-import com.penagomez.pokedex.data.service.PokemonDetailResponse;
-import com.penagomez.pokedex.data.service.PokemonService;
+import com.penagomez.pokedex.data.infrastructure.api.ApiConfig;
+import com.penagomez.pokedex.data.infrastructure.firebase.FirebaseDatabase;
+import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonDetailResponse;
+import com.penagomez.pokedex.data.infrastructure.api.PokemonApiClient;
+import com.penagomez.pokedex.data.service.PokedexService;
 import com.penagomez.pokedex.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -87,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("name", pokemonName);
 
-        this.getPokemonDetail(pokemonName);
-        Navigation.findNavController(view).navigate(R.id.myPokedexFragment, bundle);
-        binding.bottomNavigationView.setSelectedItemId(R.id.my_pokemons_menu);
+        this.getPokemonDetail(pokemonName).thenAccept(pokemonDetailResponse -> {
+            Navigation.findNavController(view).navigate(R.id.myPokedexFragment, bundle);
+            binding.bottomNavigationView.setSelectedItemId(R.id.my_pokemons_menu);
+        });
+
     }
 
     public void pokemonFavouriteClicked(Pokemon pokemon, View view){
@@ -101,32 +106,37 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("image", pokemon.getImage());
         bundle.putStringArrayList("types", new ArrayList<>(pokemon.getTypes()));
 
-
         Navigation.findNavController(view).navigate(R.id.pokemonDetailsFragment, bundle);
     }
 
 
-    private void getPokemonDetail(String pokemonName){
-        PokemonService service = APIClient.getRetrofitInstance().create(PokemonService.class);
-        service.getPokemonByName(pokemonName).enqueue(new Callback<PokemonDetailResponse>() {
-            @Override
-            public void onResponse(Call<PokemonDetailResponse> call, Response<PokemonDetailResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
+    private CompletableFuture<Void> getPokemonDetail(String pokemonName){
+        CompletableFuture<Void> future = new CompletableFuture<>();
 
-                    FirebaseDatabase repository = new FirebaseDatabase();
+        new PokedexService().getPokemonByName(pokemonName)
+             .thenAccept(pokemon -> {
+                 FirebaseDatabase repository = new FirebaseDatabase();
+                 String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                 repository.saveFavouritePokemon(
+                         pokemon,
+                         userEmail,
+                         result -> {
+                             Log.d("Firebase", "Pokemon guardado correctamente.");
+                             future.complete(null);
+                         },
+                         error -> {
+                             Log.e("Firebase", "Error al guardar el Pokemon", error);
+                             future.completeExceptionally(error);
+                         });
 
-                    Pokemon pokemon = PokemonMapper.fromResponse(response.body());
-                    String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+             })
+             .exceptionally(ex -> {
+                 Log.e("PokemonDetail", "Error al obtener los detalles del Pokémon", ex);
+                 Toast.makeText(MainActivity.this, "Error al obtener los detalles del Pokémon", Toast.LENGTH_SHORT).show();
+                 future.completeExceptionally(ex);
+                 return null;
+             });
 
-                    repository.saveFavouritePokemon(pokemon, userEmail);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PokemonDetailResponse> call, Throwable t) {
-                    Toast.makeText(MainActivity.this, R.string.not_found, Toast.LENGTH_LONG).show();
-            }
-        });
+        return future;
     }
 }

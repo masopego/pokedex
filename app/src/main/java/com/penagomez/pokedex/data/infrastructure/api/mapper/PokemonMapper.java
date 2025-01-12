@@ -1,6 +1,7 @@
-package com.penagomez.pokedex.data.dto;
+package com.penagomez.pokedex.data.infrastructure.api.mapper;
 
-import com.penagomez.pokedex.data.service.PokemonDetailResponse;
+import com.penagomez.pokedex.data.dto.Pokemon;
+import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonDetailResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,17 +1,25 @@
 package com.penagomez.pokedex.data.service;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.data.dto.PokemonName;
-import com.penagomez.pokedex.data.repository.APIClient;
-import com.penagomez.pokedex.data.repository.FirebaseDatabase;
+import com.penagomez.pokedex.data.infrastructure.api.PokemonApiClient;
+import com.penagomez.pokedex.data.infrastructure.api.mapper.PokemonMapper;
+import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonDetailResponse;
+import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonListResponse;
+import com.penagomez.pokedex.data.infrastructure.api.ApiConfig;
+import com.penagomez.pokedex.data.infrastructure.firebase.FirebaseDatabase;
+import com.penagomez.pokedex.ui.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,10 +27,10 @@ import retrofit2.Response;
 
 public class PokedexService {
 
-    private final PokemonService pokemonService; // Servicio para la API
+    private final PokemonApiClient pokemonService;
 
     public PokedexService() {
-        pokemonService = APIClient.getRetrofitInstance().create(PokemonService.class);
+        pokemonService = ApiConfig.getRetrofitInstance().create(PokemonApiClient.class);
     }
 
     public CompletableFuture<List<PokemonFavorite>> getPokemonsWithFavorites(int offset, int limit) {
@@ -58,6 +66,29 @@ public class PokedexService {
                 future.completeExceptionally(t);
             }
         });
+        return future;
+    }
+
+    public CompletableFuture<Pokemon> getPokemonByName(String name) {
+        CompletableFuture<Pokemon> future = new CompletableFuture<>();
+
+        pokemonService.getPokemonByName(name).enqueue(
+                new Callback<PokemonDetailResponse>() {
+                    @Override
+                    public void onResponse(Call<PokemonDetailResponse> call, Response<PokemonDetailResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            Pokemon pokemon = PokemonMapper.fromResponse(response.body());
+                            future.complete(pokemon);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<PokemonDetailResponse> call, Throwable t) {
+                        future.completeExceptionally(t);
+                    }
+                }
+        );
+
         return future;
     }
 

@@ -13,20 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
-import com.penagomez.pokedex.data.repository.APIClient;
 import com.penagomez.pokedex.data.service.PokedexService;
-import com.penagomez.pokedex.data.service.PokemonListResponse;
-import com.penagomez.pokedex.data.service.PokemonService;
 import com.penagomez.pokedex.databinding.PokedexListFragmentBinding;
 import com.penagomez.pokedex.ui.pokedexlist.adapter.PokedexListRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class PokedexListFragment extends Fragment {
 

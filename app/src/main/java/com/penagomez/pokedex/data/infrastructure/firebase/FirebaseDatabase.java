@@ -1,4 +1,4 @@
-package com.penagomez.pokedex.data.repository;
+package com.penagomez.pokedex.data.infrastructure.firebase;
 
 import android.util.Log;
 
@@ -25,7 +25,7 @@ public class FirebaseDatabase {
     DocumentReference pokemonRef = pokedexRef.document();
 
 
-    public void saveFavouritePokemon(Pokemon pokemon, String userEmail){
+    public void saveFavouritePokemon(Pokemon pokemon, String userEmail, Consumer<Void> onSuccess, Consumer<Exception> onError) {
 
         Map<String, Object> row = new HashMap<>();
         row.put("name", pokemon.getName());
@@ -36,18 +36,21 @@ public class FirebaseDatabase {
         row.put("types", pokemon.getTypes());
         row.put("userId", userEmail);
 
-
         pokemonRef.set(row)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("Firestore", "Documento agregado correctamente");
+                        // Llamar al Consumer en caso de éxito
+                        onSuccess.accept(aVoid);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("Firestore", "Error al agregar documento", e);
+                        // Llamar al Consumer en caso de error
+                        onError.accept(e);
                     }
                 });
     }

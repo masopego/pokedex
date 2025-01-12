@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.penagomez.pokedex.MainActivity;
+import com.penagomez.pokedex.ui.MainActivity;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.databinding.PokemonCardviewBinding;
 

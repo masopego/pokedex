@@ -12,9 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
-import com.penagomez.pokedex.data.repository.FirebaseDatabase;
+import com.penagomez.pokedex.data.infrastructure.firebase.FirebaseDatabase;
 import com.penagomez.pokedex.databinding.MyPokedexFragmentBinding;
 import com.penagomez.pokedex.ui.mypokedex.adapter.MyPokedexReciclerViewAdapter;
 
@@ -58,8 +59,12 @@ public class MyPokedexFragment extends Fragment {
 
     private void loadFavouritesPokemons() {
         FirebaseDatabase repository = new FirebaseDatabase();
-        String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser == null){
+            return;
+        }
 
+        String userEmail = firebaseUser.getEmail();
         repository.getFavouritePokemons(
                 userEmail,
                 pokemons -> {

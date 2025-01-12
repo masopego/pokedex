@@ -1,4 +1,4 @@
-package com.penagomez.pokedex;
+package com.penagomez.pokedex.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.penagomez.pokedex.R;
 
 public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth auth = FirebaseAuth.getInstance();
