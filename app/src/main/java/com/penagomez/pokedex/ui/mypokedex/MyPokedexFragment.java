@@ -18,15 +18,18 @@ import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.data.infrastructure.firebase.FirebaseDatabase;
 import com.penagomez.pokedex.databinding.MyPokedexFragmentBinding;
 import com.penagomez.pokedex.ui.mypokedex.adapter.MyPokedexReciclerViewAdapter;
+import com.penagomez.pokedex.ui.mypokedex.listener.OnPokemonActionListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPokedexFragment extends Fragment {
+public class MyPokedexFragment extends Fragment implements OnPokemonActionListener {
 
     private MyPokedexFragmentBinding binding;
     private List<Pokemon> favouritePokemons = new ArrayList<>();
     private MyPokedexReciclerViewAdapter adapter;
+
+
 
     @Nullable
     @Override
@@ -41,25 +44,30 @@ public class MyPokedexFragment extends Fragment {
 
         loadFavouritesPokemons();
 
-        adapter = new MyPokedexReciclerViewAdapter(favouritePokemons, getActivity());
+        adapter = new MyPokedexReciclerViewAdapter(favouritePokemons, getActivity(), this);
         binding.pokemonFavouriteRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.pokemonFavouriteRecyclerview.setAdapter(adapter);
 
     }
 
 
-    /*public void onDeleteClick(View){
-
+    public void onDeleteClick(Pokemon pokemon){
         FirebaseDatabase repository = new FirebaseDatabase();
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-        repository.removeFavouritePokemon(userEmail);
-    }*/
+        repository.removeFavouritePokemon(userEmail, pokemon.getName(), result ->{
+            favouritePokemons.remove(pokemon);
+            adapter.notifyDataSetChanged();
+        }, error -> {
+            Toast.makeText(getContext(), R.string.not_found + error.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+    }
 
 
     private void loadFavouritesPokemons() {
         FirebaseDatabase repository = new FirebaseDatabase();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         if(firebaseUser == null){
             return;
         }
