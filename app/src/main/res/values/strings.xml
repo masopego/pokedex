@@ -27,13 +27,18 @@
 
     <!-- Preference  -->
     <string name="setting_header">Ajustes</string>
-    <string name="remove_favourites">Eliminar mis pokemons</string>
+    <string name="remove_favourites_title">Eliminar mis pokemons</string>
+    <string name="about_us_title">Acerca de...</string>
     <string name="logout_title">Cerrar sesión</string>
+
 
     <!-- Messages Preferences -->
     <string name="remove_favourites_enabled">Eliminación de Pokemons habilitada</string>
     <string name="remove_favourites_disabled">Eliminación de Pokemons deshabilitada</string>
     <string name="logout_done">Sesión cerrada</string>
+
+    <string name="about_us_message">Aplicación desarrollada por María Soledad Peña Gómez. Versión 1.0.</string>
+    <string name="about_us_button">OK</string>
 
 
 </resources>
