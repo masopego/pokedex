@@ -1,7 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable name="pokemon" type="com.penagomez.pokedex.data.dto.Pokemon"/>
+        <variable
+            name="isRemoveFavouritesEnabled"
+            type="boolean" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -54,7 +58,8 @@
                 android:src="@drawable/ic_rubbish"
                 android:contentDescription="Borrar"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:visibility="@{isRemoveFavouritesEnabled ? View.VISIBLE : View.GONE}" />
 
         </LinearLayout>
 

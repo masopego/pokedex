@@ -23,8 +23,14 @@ public class MyPokedexViewHolder extends RecyclerView.ViewHolder {
 
 
     public void bind(Pokemon pokemon){
+        boolean canRemoveFavourites = androidx.preference.PreferenceManager
+                .getDefaultSharedPreferences(itemView.getContext())
+                .getBoolean("remove_favourites", false);
+
+
         Picasso.get().load(pokemon.getImage()).into(binding.image);
         binding.name.setText(pokemon.getName());
+        binding.setIsRemoveFavouritesEnabled(canRemoveFavourites);
         binding.executePendingBindings();
     }
 }
