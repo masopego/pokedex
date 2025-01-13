@@ -4,11 +4,18 @@
 
         <SwitchPreferenceCompat
             app:key="remove_favourites"
-            app:title="@string/remove_favourites" />
+            app:title="@string/remove_favourites_title" />
+
+        <Preference
+            app:key="about_us"
+            app:title="@string/about_us_title"
+            app:icon="@android:drawable/ic_menu_view"
+            />
 
         <Preference
             app:key="logout"
-            app:title="@string/logout_title" />
+            app:title="@string/logout_title"
+            app:icon="@android:drawable/ic_lock_power_off"/>
 
     </PreferenceCategory>
 
