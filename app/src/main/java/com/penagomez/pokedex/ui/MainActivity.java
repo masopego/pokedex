@@ -20,7 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceManager;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.penagomez.pokedex.LocaleHelper;
+import com.penagomez.pokedex.ui.utils.LocaleHelper;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;

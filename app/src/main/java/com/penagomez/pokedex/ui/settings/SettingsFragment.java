@@ -3,8 +3,6 @@ package com.penagomez.pokedex.ui.settings;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -14,11 +12,10 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.penagomez.pokedex.LocaleHelper;
+import com.penagomez.pokedex.ui.utils.LocaleHelper;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.ui.sign.LoginActivity;
 
-import java.util.Locale;
 import androidx.preference.PreferenceManager;
 
 public class SettingsFragment extends PreferenceFragmentCompat {

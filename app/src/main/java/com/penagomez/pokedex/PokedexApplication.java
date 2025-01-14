@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import com.penagomez.pokedex.ui.utils.LocaleHelper;
+
 import java.util.Locale;
 
 public class PokedexApplication extends Application {

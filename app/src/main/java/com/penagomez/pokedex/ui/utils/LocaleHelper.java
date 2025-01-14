@@ -1,4 +1,4 @@
-package com.penagomez.pokedex;
+package com.penagomez.pokedex.ui.utils;
 
 import android.content.Context;
 import android.content.res.Configuration;

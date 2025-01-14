@@ -30,7 +30,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.penagomez.pokedex.LocaleHelper;
+import com.penagomez.pokedex.ui.utils.LocaleHelper;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.ui.MainActivity;
 
