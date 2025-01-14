@@ -58,6 +58,10 @@
     <string name="about_us_message">Aplicación desarrollada por María Soledad Peña Gómez. Versión 1.0.</string>
     <string name="about_us_button">OK</string>
 
+    <string name="logout_message">¿Estás seguro de que quieres cerrar sesión?</string>
+    <string name="logout_confirm_button">Sí</string>
+    <string name="logout_not_button">No</string>
+
     <!-- Pokemon's types -->
     <string name="type_normal">Normal</string>
     <string name="type_fighting">Lucha</string>

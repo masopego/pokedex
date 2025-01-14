@@ -44,17 +44,26 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         }
     }
 
+
     private boolean handleLogout(Preference preference) {
-        FirebaseAuth.getInstance().signOut();
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.logout_title)
+                .setMessage(R.string.logout_message)
+                .setPositiveButton(R.string.logout_confirm_button, (dialog, which) -> {
+                    FirebaseAuth.getInstance().signOut();
 
-        Intent intent = new Intent(requireContext(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Borra el stack
-        startActivity(intent);
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
 
-        Toast.makeText(requireContext(), R.string.logout_done, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), R.string.logout_done, Toast.LENGTH_SHORT).show();
+                })
+                .setNegativeButton(R.string.logout_not_button, (dialog, which) -> dialog.dismiss())
+                .show();
 
         return true;
     }
+
 
     private boolean handleAboutUs(Preference preference){
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());

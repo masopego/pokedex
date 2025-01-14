@@ -54,6 +54,10 @@
     <string name="about_us_message">App developed by María Soledad Peña Gómez. Version 1.0.</string>
     <string name="about_us_button">OK</string>
 
+    <string name="logout_message">Are you sure you want to log out?</string>
+    <string name="logout_confirm_button">Yes</string>
+    <string name="logout_not_button">No</string>
+
     <!-- Pokemon's types -->
     <string name="type_normal">Normal</string>
     <string name="type_fighting">Fighting</string>
