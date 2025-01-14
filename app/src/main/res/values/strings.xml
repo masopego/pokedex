@@ -30,6 +30,18 @@
     <string name="remove_favourites_title">Eliminar mis pokemons</string>
     <string name="about_us_title">Acerca de...</string>
     <string name="logout_title">Cerrar sesión</string>
+    <string name="language_title">Idioma</string>
+    <string name="language_summary">Selecciona el idioma de la aplicación</string>
+
+
+    <string-array name="language_options">
+        <item>Español</item>
+        <item>Inglés</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
 
 
     <!-- Messages Preferences -->

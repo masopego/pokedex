@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Pokédex</string>
+
+    <!-- Menu -->
+    <string name="nav_pokedex_list">Pokédex</string>
+    <string name="nav_my_pokemons">My Pokémon</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Register / Login -->
+    <string name="login_button">Log In</string>
+    <string name="register_button">Sign Up</string>
+    <string name="optional">or</string>
+    <string name="register_link"><u>Sign Up</u></string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="user_register_success">User successfully registered</string>
+    <string name="user_login_success">User successfully authenticated</string>
+    <string name="max_length_error">Password must be at least 6 characters</string>
+    <string name="generic_error">Authentication failed</string>
+    <string name="required_error">Please fill in all fields</string>
+    <string name="invalid_format_error">Invalid email format</string>
+
+    <!-- PokedexList -->
+    <string name="not_found">Error loading Pokémon. Please check your internet connection.</string>
+
+    <!-- Preference -->
+    <string name="setting_header">Settings</string>
+    <string name="remove_favourites_title">Remove My Pokémon</string>
+    <string name="about_us_title">About...</string>
+    <string name="logout_title">Log Out</string>
+    <string name="language_title">Language</string>
+    <string name="language_summary">Select the language for the app</string>
+
+    <string-array name="language_options">
+        <item>Spanish</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
+
+    <!-- Messages Preferences -->
+    <string name="remove_favourites_enabled">Pokemon removal enabled</string>
+    <string name="remove_favourites_disabled">Pokemon removal disabled</string>
+    <string name="logout_done">Logged out</string>
+
+    <string name="about_us_message">App developed by María Soledad Peña Gómez. Version 1.0.</string>
+    <string name="about_us_button">OK</string>
+</resources>

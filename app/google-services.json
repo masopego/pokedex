@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "974906605969",
+    "project_id": "pokedex-masopego",
+    "storage_bucket": "pokedex-masopego.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974906605969:android:56a915d70c2460a9fdda30",
+        "android_client_info": {
+          "package_name": "com.penagomez.pokedex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974906605969-vhne3lbvt5a85sumv881arrgt8jmuc8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.penagomez.pokedex",
+            "certificate_hash": "f23c40138b52a921f1a7c0610c9965f0a111fef3"
+          }
+        },
+        {
+          "client_id": "974906605969-3ldil069es2lvkofdue70c54ocmuee28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0w4pKLOsG-WI8pv-8Dj84JBiT1hSJzA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974906605969-3ldil069es2lvkofdue70c54ocmuee28.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

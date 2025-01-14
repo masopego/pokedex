@@ -1,15 +1,22 @@
 package com.penagomez.pokedex.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.penagomez.pokedex.R;
+
+import java.util.Locale;
+import androidx.preference.PreferenceManager;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -20,12 +27,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference removeFavouritesPreference = findPreference("remove_favourites");
         Preference aboutUsPreference = findPreference("about_us");
         Preference logoutPreference = findPreference("logout");
+        ListPreference languagePreference = findPreference("language");
 
         if(removeFavouritesPreference != null){
             removeFavouritesPreference.setOnPreferenceChangeListener(this::handleRemoveFavourites);
         }
         if(aboutUsPreference != null){
             aboutUsPreference.setOnPreferenceClickListener(this::handleAboutUs);
+        }
+        if (languagePreference != null) {
+            setupLanguagePreferenceListener(languagePreference);
         }
         if (logoutPreference != null) {
             logoutPreference.setOnPreferenceClickListener(this::handleLogout);
@@ -62,6 +73,41 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 Toast.LENGTH_SHORT).show();
 
         return true;
+    }
+
+    private void setupLanguagePreferenceListener(ListPreference languagePreference) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        String savedLanguage = prefs.getString("language", "es");
+
+        if (!savedLanguage.equals(languagePreference.getValue())) {
+            languagePreference.setValue(savedLanguage);
+        }
+
+        languagePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            String selectedLanguage = (String) newValue;
+
+            updateLocale(selectedLanguage);
+
+            return true;
+        });
+    }
+
+    private void updateLocale(String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+
+        Resources resources = requireContext().getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("language", languageCode);
+        editor.apply();
+
+        requireActivity().recreate();
     }
 
 }

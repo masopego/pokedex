@@ -2,6 +2,15 @@
 
     <PreferenceCategory app:title="@string/setting_header">
 
+        <ListPreference
+            app:key="language"
+            app:title="@string/language_title"
+            app:summary="@string/language_summary"
+            app:entries="@array/language_options"
+            app:entryValues="@array/language_values"
+            app:defaultValue="es"
+            app:icon="@android:drawable/ic_menu_search" />
+
         <SwitchPreferenceCompat
             app:key="remove_favourites"
             app:title="@string/remove_favourites_title" />
