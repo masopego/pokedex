@@ -61,11 +61,11 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = auth.getCurrentUser();
-                        Toast.makeText(this, R.string.user_register_success + user.getEmail(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.user_register_success) + " " +  user.getEmail(), Toast.LENGTH_SHORT).show();
 
                         goToLoginActivity();
                     } else {
-                        Toast.makeText(this, R.string.generic_error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.generic_error) + " " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 

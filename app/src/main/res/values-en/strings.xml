@@ -23,6 +23,9 @@
     <!-- PokedexList -->
     <string name="not_found">Error loading Pokémon. Please check your internet connection.</string>
 
+    <!-- My Pokedex -->
+    <string name="favourite_pokemons_title">Add your favorite Pokémon to this list</string>
+
     <!-- Pokemon Details -->
     <string name="types_label">Type: </string>
     <string name="weight_label">Weight: </string>
