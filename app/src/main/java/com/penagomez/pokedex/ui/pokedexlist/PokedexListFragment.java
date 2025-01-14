@@ -48,11 +48,13 @@ public class PokedexListFragment extends Fragment {
     }
 
     private void loadPokemons() {
+        binding.progressBar.setVisibility(View.VISIBLE);
 
         PokedexService pokedexService = new PokedexService();
 
         pokedexService.getPokemonsWithFavorites(0, 50)
         .thenAccept(pokemons -> {
+            binding.progressBar.setVisibility(View.GONE);
             pokemonNames.addAll(pokemons);
             adapter.notifyDataSetChanged();
         }).exceptionally(t -> {

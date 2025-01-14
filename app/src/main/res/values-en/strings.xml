@@ -23,6 +23,12 @@
     <!-- PokedexList -->
     <string name="not_found">Error loading Pokémon. Please check your internet connection.</string>
 
+    <!-- Pokemon Details -->
+    <string name="types_label">Type: </string>
+    <string name="weight_label">Weight: </string>
+    <string name="height_label">Height: </string>
+    <string name="id_label">Index: </string>
+
     <!-- Preference -->
     <string name="setting_header">Settings</string>
     <string name="remove_favourites_title">Remove My Pokémon</string>

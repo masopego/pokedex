@@ -13,6 +13,25 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Subtitle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Label">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Tag">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+
     <!-- Card View styles -->
     <style name="CardViewStyle">
         <item name="cardCornerRadius">16dp</item>

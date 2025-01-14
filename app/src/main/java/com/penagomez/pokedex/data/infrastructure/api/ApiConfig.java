@@ -19,7 +19,4 @@ public class ApiConfig {
         return retrofit;
     }
 
-    public static PokemonApiClient getPokemonApiClient(){
-        return ApiConfig.getRetrofitInstance().create(PokemonApiClient.class);
-    }
 }

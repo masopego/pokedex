@@ -5,6 +5,15 @@
     android:paddingBottom="60dp"
     android:paddingHorizontal="20dp">
 
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:indeterminate="true" />
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.penagomez.pokedex.ui;
+package com.penagomez.pokedex.ui.settings;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.penagomez.pokedex.R;
+import com.penagomez.pokedex.ui.sign.LoginActivity;
 
 import java.util.Locale;
 import androidx.preference.PreferenceManager;

@@ -25,6 +25,12 @@
     <!-- PokedexList -->
     <string name="not_found">Error al cargar los Pokémon. Revisa tu conexión a Internet.</string>
 
+    <!-- Pokemon Details -->
+    <string name="types_label">Tipo: </string>
+    <string name="weight_label">Peso: </string>
+    <string name="height_label">Altura: </string>
+    <string name="id_label">Índice: </string>
+
     <!-- Preference  -->
     <string name="setting_header">Ajustes</string>
     <string name="remove_favourites_title">Eliminar mis pokemons</string>

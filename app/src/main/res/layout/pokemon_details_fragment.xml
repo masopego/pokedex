@@ -17,34 +17,81 @@
         android:layout_marginTop="40dp"
         style="@style/Title"
          />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Label"
+            android:text="@string/weight_label"/>
+
+        <TextView
+            android:id="@+id/pokemon_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Label"
+            android:text="@string/height_label"/>
+        <TextView
+            android:id="@+id/pokemon_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Label"
+            android:text="@string/id_label"/>
+        <TextView
+            android:id="@+id/pokemon_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/pokemon_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-         />
-    <TextView
-        android:id="@+id/pokemon_height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        />
-    <TextView
-        android:id="@+id/pokemon_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        />
+        android:text="@string/types_label"
+        android:layout_marginTop="40dp"
+        style="@style/Label" />
+
     <TextView
         android:id="@+id/pokemon_types"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
+        style="@style/Tag"
         />
 
 </LinearLayout>

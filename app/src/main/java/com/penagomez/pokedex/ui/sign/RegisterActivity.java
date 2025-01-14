@@ -1,4 +1,4 @@
-package com.penagomez.pokedex.ui;
+package com.penagomez.pokedex.ui.sign;
 
 import android.content.Intent;
 import android.os.Bundle;
