@@ -1,5 +1,7 @@
 package com.penagomez.pokedex.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,8 +17,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.penagomez.pokedex.LocaleHelper;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
@@ -133,4 +137,12 @@ public class MainActivity extends AppCompatActivity {
         return future;
     }
 
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(newBase);
+        String languageCode = prefs.getString("language", "es");
+        Context context = LocaleHelper.updateLocale(newBase, languageCode);
+        super.attachBaseContext(context);
+    }
 }

@@ -1,6 +1,7 @@
 package com.penagomez.pokedex.ui.sign;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import com.google.firebase.FirebaseApp;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
@@ -27,8 +30,11 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.penagomez.pokedex.LocaleHelper;
 import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.ui.MainActivity;
+
+import java.util.Locale;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -179,6 +185,10 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String language = prefs.getString("language", Locale.getDefault().getLanguage());
+        LocaleHelper.updateLocale(this, language);
 
         if(user !=  null){
             System.out.println(user.getEmail());
