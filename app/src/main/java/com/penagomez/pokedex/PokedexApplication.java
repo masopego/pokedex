@@ -8,6 +8,8 @@ import android.content.res.Resources;
 
 import androidx.preference.PreferenceManager;
 
+import com.penagomez.pokedex.data.dto.mapper.PokemonTypeTranslations;
+import com.penagomez.pokedex.data.infrastructure.api.mapper.PokemonTypeMapper;
 import com.penagomez.pokedex.ui.MainActivity;
 
 import java.util.Locale;
@@ -22,6 +24,8 @@ public class PokedexApplication extends Application {
         if (!Locale.getDefault().getLanguage().equals(getSavedLanguage())) {
             recreateMainActivity();
         }
+
+        PokemonTypeMapper.initialize(PokemonTypeTranslations.getTranslations(this));
     }
 
     private void applySavedLanguage() {

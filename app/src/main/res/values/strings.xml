@@ -58,5 +58,24 @@
     <string name="about_us_message">Aplicación desarrollada por María Soledad Peña Gómez. Versión 1.0.</string>
     <string name="about_us_button">OK</string>
 
+    <!-- Pokemon's types -->
+    <string name="type_normal">Normal</string>
+    <string name="type_fighting">Lucha</string>
+    <string name="type_flying">Volador</string>
+    <string name="type_poison">Veneno</string>
+    <string name="type_ground">Tierra</string>
+    <string name="type_rock">Roca</string>
+    <string name="type_bug">Bicho</string>
+    <string name="type_ghost">Fantasma</string>
+    <string name="type_steel">Acero</string>
+    <string name="type_fire">Fuego</string>
+    <string name="type_water">Agua</string>
+    <string name="type_grass">Planta</string>
+    <string name="type_electric">Eléctrico</string>
+    <string name="type_psychic">Psíquico</string>
+    <string name="type_ice">Hielo</string>
+    <string name="type_dragon">Dragón</string>
+    <string name="type_dark">Siniestro</string>
+    <string name="type_fairy">Hada</string>
 
 </resources>

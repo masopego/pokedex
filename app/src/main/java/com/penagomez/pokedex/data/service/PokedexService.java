@@ -1,15 +1,11 @@
 package com.penagomez.pokedex.data.service;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import com.penagomez.pokedex.R;
 import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.data.dto.PokemonFavorite;
 import com.penagomez.pokedex.data.dto.PokemonName;
@@ -19,7 +15,6 @@ import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonDetailResp
 import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonListResponse;
 import com.penagomez.pokedex.data.infrastructure.api.ApiConfig;
 import com.penagomez.pokedex.data.infrastructure.firebase.FirebaseDatabase;
-import com.penagomez.pokedex.ui.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

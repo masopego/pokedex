@@ -35,19 +35,13 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pokemon Name" />
+                    />
 
                 <TextView
                     android:id="@+id/type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tipo" />
-
-                <TextView
-                    android:id="@+id/index"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Índice" />
+                    />
             </LinearLayout>
 
             <ImageButton

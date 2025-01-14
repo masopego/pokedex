@@ -1,6 +1,5 @@
 package com.penagomez.pokedex.data.infrastructure.api;
 
-
 import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonDetailResponse;
 import com.penagomez.pokedex.data.infrastructure.api.responses.PokemonListResponse;
 

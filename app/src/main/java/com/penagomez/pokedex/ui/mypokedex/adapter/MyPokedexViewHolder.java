@@ -9,6 +9,9 @@ import com.penagomez.pokedex.data.dto.Pokemon;
 import com.penagomez.pokedex.databinding.FavouritePokemonCardviewBinding;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MyPokedexViewHolder extends RecyclerView.ViewHolder {
 
@@ -28,8 +31,12 @@ public class MyPokedexViewHolder extends RecyclerView.ViewHolder {
                 .getBoolean("remove_favourites", false);
 
 
+        List<String> types = pokemon.getTypes();
+        String typesText = types != null ? android.text.TextUtils.join(", ", types) : "N/A";
+
         Picasso.get().load(pokemon.getImage()).into(binding.image);
         binding.name.setText(pokemon.getName());
+        binding.type.setText(typesText);
         binding.setIsRemoveFavouritesEnabled(canRemoveFavourites);
         binding.executePendingBindings();
     }
